@@ -44,7 +44,6 @@ class Movies extends Component{
 
     render(){
 
-        const {length: count} = this.state.movies;
         const {pageSize} = this.state;
         const {selectedGenre} = this.state;
 
