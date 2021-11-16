@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import './App.css';
+import {Route,Redirect,Switch} from 'react-router-dom'
 import NotFound from './components/common/notFound';
 import Customers from './components/customers';
 import Movies from './components/movies';
 import Rentals from './components/rentals';
 import MovieForm from './components/movieForm'
-import {Route,Redirect,Switch} from 'react-router-dom'
 import NavBar from './components/navBar';
+import LoginForm from './components/loginform';
+import './App.css';
+
 
 class App extends Component{
   render(){
     return (
       <React.Fragment>
         <NavBar/>
-      <main className="container">
+      <main className="container">  
         <Switch>
+        <Route path="/login" component={LoginForm} ></Route>   
        <Route path="/movies/:id" component={MovieForm} ></Route>   
       <Route path="/movies"  component={Movies}>  </Route>
       <Route path="/customers"  component={Customers}>  </Route>
