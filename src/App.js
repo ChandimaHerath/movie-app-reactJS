@@ -1,14 +1,17 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import NotFound from './components/common/notFound';
 import Customers from './components/customers';
 import Movies from './components/movies';
 import Rentals from './components/rentals';
 import {Route,Redirect,Switch} from 'react-router-dom'
+import NavBar from './components/navBar';
 
 class App extends Component{
   render(){
     return (
+      <React.Fragment>
+        <NavBar/>
       <main className="container">
         <Switch>
       <Route path="/movies"  component={Movies}>  </Route>
@@ -19,8 +22,9 @@ class App extends Component{
       <Redirect to="/not-found"/>
 
       </Switch>
-
     </main>
+    </React.Fragment>
+
     );
   }
 }
