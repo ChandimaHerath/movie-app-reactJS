@@ -31,10 +31,31 @@ class LoginForm  extends React.Component {
 
         }
 
+
+        validateProperty = input => {
+            if (input.name === 'username'){
+                if (input.value.trim()==='') return 'Username is required';
+
+            } 
+
+            if (input.name === 'password'){
+                if (input.value.trim()==='') return 'password is required';
+                
+            } 
+        };
+
+
         handleChange=e=>{
+            
+            const errors = {...this.state.errors};
+            const errormessage = this.validateProperty(e.currentTarget);
+            if(errormessage) errors[e.currentTarget.name] = errormessage;
+            else delete errors[e.currentTarget.name];
+            
             const account = {...this.state.account};
             account[e.currentTarget.name] = e.currentTarget.value;
-            this.setState({account});
+            
+            this.setState({account,errors});
 
         }
 
