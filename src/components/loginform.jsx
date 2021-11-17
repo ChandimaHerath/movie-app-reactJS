@@ -14,7 +14,7 @@ class LoginForm  extends React.Component {
         }
 
         validate(){
-
+            // validating replaced with Joi library functions
             const result = Joi.validate(this.state.account, this.schema,{abortEarly:false});
 
             if (!result.error) return null;
@@ -91,7 +91,7 @@ class LoginForm  extends React.Component {
                 { this.state.errors.password&&<div className="alert alert-danger"> {this.state.errors.password} </div>}
                 </div> 
                 </form>
-                <button  onClick={this.handleSubmit} className="btn btn-primary">Save</button>
+                <button disabled={this.validate()} onClick={this.handleSubmit} className="btn btn-primary">Save</button>
         </div>;
     }
 }
