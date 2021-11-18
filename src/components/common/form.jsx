@@ -62,6 +62,21 @@ class Form  extends Component {
 
     };
 
+    renderInput(name, label,type="text"){
+        return(
+            <div className="form-group">
+            <label htmlFor={name}>{label}</label>
+            <input autoFocus name={name} 
+            onChange={this.handleChange} 
+            value={this.state.data[name]} 
+            id={name} 
+            type={type} 
+            className="form-control" />
+            { this.state.errors[name]&&<div className="alert alert-danger"> {this.state.errors[name]} </div>}
+            </div> 
+        );
+    }
+
    renderButton(label){
     return <button disabled={this.validate()} onClick={this.handleSubmit} className="btn btn-primary">{label}</button>
 
