@@ -49,15 +49,10 @@ class LoginForm  extends React.Component {
 
 
         validateProperty = input => {
-            if (input.name === 'username'){
-                if (input.value.trim()==='') return 'Username is required';
-
-            } 
-
-            if (input.name === 'password'){
-                if (input.value.trim()==='') return 'password is required';
-                
-            } 
+            const obj ={[input.name]:input.value };
+            const schema = {[input.name]: this.schema[input.name]};
+            const {error} = Joi.validate(obj, schema);
+            return error ? error.details[0].message: null;
         };
 
 
