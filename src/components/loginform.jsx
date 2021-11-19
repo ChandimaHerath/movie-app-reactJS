@@ -4,13 +4,13 @@ import Form from './common/form';
 class LoginForm  extends Form {
 
         state = {
-            data :{username:'', password:'' },
+            data :{userName:'', Password:'' },
             errors : {}
         }
 
         schema = {
-            username : Joi.string().required(),
-            password : Joi.string().required()
+            userName : Joi.string().required(),
+            Password : Joi.string().required()
         }
 
 
@@ -20,11 +20,10 @@ class LoginForm  extends Form {
      
 
     render() { 
-        const{data} = this.state;
         return <div>
                 <form >
-                {this.renderInput('username','User Name')}
-                {this.renderInput('password','Password','password')}
+                {this.renderInput('userName','User Name',true)}
+                {this.renderInput('Password','Password',false,'password')}
                 {this.renderButton('Login')}
                 </form>
              </div>;

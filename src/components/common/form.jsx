@@ -32,6 +32,7 @@ class Form  extends Component {
 
     validateProperty = input => {
         const obj ={[input.name]:input.value };
+        console.log(input.name);
         const schema = {[input.name]: this.schema[input.name]};
         const {error} = Joi.validate(obj, schema);
         return error ? error.details[0].message: null;
@@ -60,11 +61,11 @@ class Form  extends Component {
 
     };
 
-    renderInput(name, label,type="text"){
+    renderInput(name, label,focus=false,type="text",){
         return(
             <div className="form-group">
             <label htmlFor={name}>{label}</label>
-            <input autoFocus name={name} 
+            <input autoFocus={focus} name={name} 
             onChange={this.handleChange} 
             value={this.state.data[name]} 
             id={name} 
